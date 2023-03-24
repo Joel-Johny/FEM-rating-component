@@ -5,7 +5,6 @@ function submit(){
     card1.classList.remove("show")
     card2.classList.add("show")
     card2.classList.remove("hide")
-    console.log(card1,card2)
 
 }
 function rateAgain(){
@@ -15,8 +14,22 @@ function rateAgain(){
     card1.classList.remove("hide")
     card2.classList.add("hide")
     card2.classList.remove("show")
-    console.log(card1,card2)
 
 }
-const buttons=[...document.querySelectorAll(".btn")]
+const buttons = document.querySelectorAll('.btn');
+const rating=document.getElementById("f-rate")
+console.log(rating)
+buttons.forEach((button)=>{
+    button.addEventListener("click",()=>{
+        rating.innerHTML=button.value
+        button.classList.add("selected")
+        deselected(button.value)
+    })
+})
 
+function deselected(value){
+    buttons.forEach((button)=>{
+        if(button.value!=value)
+            button.classList.remove("selected")
+    })
+}
